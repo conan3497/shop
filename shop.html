@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Molino del Pallone</title>
+    <link rel="stylesheet" href="CSS/shop.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🌿 Molino del Pallone</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#prodotti">Prodotti</a></li>
+                <li><a href="#categorie">Categorie</a></li>
+                <li><a href="#carrello">Carrello <span id="cart-count" class="cart-badge">0</span></a></li>
+            </ul>
+            <button class="cart-toggle" onclick="toggleCart()">
+                🛒 <span id="cart-count-mobile" class="cart-badge">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Shop -->
+        <section class="shop-hero">
+            <h1>🛒 Shop </h1>
+            <p>Scopri e acquista i migliori prodotti del nostro territorio</p>
+        </section>
+
+        <!-- Filtri e Ordinamento -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label>Categoria:</label>
+                    <select id="category-filter" onchange="applyFilters()">
+                        <option value="all">Tutte le Categorie</option>
+                        <option value="alimentari">Alimentari</option>
+                        <option value="artigianato">Artigianato</option>
+                        <option value="bevande">Bevande</option>
+                        <option value="conserve">Conserve</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Ordina per:</label>
+                    <select id="sort-filter" onchange="applySorting()">
+                        <option value="default">Predefinito</option>
+                        <option value="price-asc">Prezzo: crescente</option>
+                        <option value="price-desc">Prezzo: decrescente</option>
+                        <option value="name">Nome A-Z</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Cerca:</label>
+                    <input type="text" id="search-input" placeholder="Cerca prodotti..." oninput="searchProducts()">
+                </div>
+            </div>
+        </section>
+
+        <!-- Griglia Prodotti -->
+        <section class="products-section" id="prodotti">
+            <div class="products-grid" id="products-container">
+                <!-- I prodotti verranno caricati da JavaScript -->
+            </div>
+
+            <!-- Messaggio nessun prodotto -->
+            <div id="no-products" class="no-products" style="display: none;">
+                <div class="no-products-icon">🔍</div>
+                <h3>Nessun prodotto trovato</h3>
+                <p>Prova a modificare i filtri di ricerca</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Carrello Laterale -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>🛒 Il Tuo Carrello</h2>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+
+        <div class="cart-body" id="cart-items">
+            <div class="cart-empty">
+                <p>Il carrello è vuoto</p>
+                <p class="cart-empty-subtitle">Aggiungi prodotti per iniziare!</p>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Totale:</span>
+                <span id="cart-total">€0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Procedi all'Acquisto</button>
+            <button class="btn-clear-cart" onclick="clearCart()">Svuota Carrello</button>
+        </div>
+    </div>
+
+    <!-- Overlay per carrello -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Modal Prodotto -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProductModal()">&times;</span>
+            <div id="modal-body">
+                <!-- Contenuto caricato dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Molino del Pallone - Alto Reno Terme. Tutti i diritti riservati. 🌍</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">
+            <a href="index.html" style="color: #a8d8a8; text-decoration: none;">Torna alla Home</a> | 
+            <a href="index.html#contact" style="color: #a8d8a8; text-decoration: none;">Contatti</a>
+        </p>
+    </footer>
+
+    <script src="JS/shop.js"></script>
+</body>
+</html>
